@@ -42,9 +42,7 @@ while True:
         print("\n====== Filter by category ======")
         category = input("Category: ")
         category_total = 0
-
-        print(f"Category: {category}")
-
+        
         for expense in expenses:
             if expense['category'] == category:
                 category_total += expense['amount']
@@ -53,7 +51,22 @@ while True:
         print(f"Total expenses: {category_total}€")
 
     elif choice == "5":
-        pass
+        print("\n====== DELETE EXPENSE ======")
+        for index, expense in enumerate(expenses):
+            print(
+                f"{index + 1}. {expense['amount']} € | {expense['category']} | {expense['description']}")
+        try:
+            expense_number = int(
+                input("Which expense do you want to delete? "))
+
+            if expense_number < 1 or expense_number > len(expenses):
+                print("Invalid expense number!")
+            else:
+                expenses.pop(expense_number - 1)
+                print("Expense deleted successfully!")
+
+        except ValueError:
+            print("Please enter a valid number!")
 
     elif choice == "6":
         print("Program closed.")
