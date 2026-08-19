@@ -26,9 +26,13 @@ while True:
 
     elif choice == "2":
         print("\n====== Expenses ======")
-        for expense in expenses:
-            print(
-                f"{expense['amount']} € | {expense['category']} | {expense['description']}")
+
+        if not expenses:
+            print("No expenses found.")
+        else:
+            for expense in expenses:
+                print(
+                    f"{expense['amount']} € | {expense['category']} | {expense['description']}")
 
     elif choice == "3":
         print("\n====== Total expenses ======")
@@ -42,7 +46,7 @@ while True:
         print("\n====== Filter by category ======")
         category = input("Category: ")
         category_total = 0
-        
+
         for expense in expenses:
             if expense['category'] == category:
                 category_total += expense['amount']
